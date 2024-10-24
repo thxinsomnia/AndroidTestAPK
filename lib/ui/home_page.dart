@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/ui/produk_detail.dart';
 import 'package:myapp/ui/data_penjualan.dart';
+import 'package:myapp/ui/produk_form.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -13,7 +14,7 @@ class HomePage extends StatelessWidget {
         crossAxisCount: 2, // Jumlah kolom
         children: [
           _buildButton(context, 'Dashboard', const DataPenjualan(), 'assets/img/dashboard.png'),
-          _buildButton(context, 'Tambah Data', const ProdukDetail(), 'assets/img/tambah.png'),
+          _buildButton(context, 'Tambah Data', const ProdukForm(), 'assets/img/tambah.png'),
           _buildButton(context, 'Update Data', const ProdukDetail(), 'assets/img/update.png'),
           _buildButton(context, 'Logout', const ProdukDetail(), 'assets/img/logout.png'),
         ],
