@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+// import 'package:myapp/ui/data_produk.dart';
 import 'package:myapp/ui/logout.dart';
 // import 'package:myapp/ui/produk_detail.dart';
 import 'package:myapp/ui/data_penjualan.dart';
+import 'package:myapp/ui/produk_page.dart';
+// import 'package:myapp/ui/produk_page.dart';
 // import 'package:myapp/ui/produk_form.dart';
 // import 'package:myapp/ui/edit_data.dart';
 
@@ -15,8 +18,8 @@ class HomePage extends StatelessWidget {
       body: GridView.count(
         crossAxisCount: 2, // Jumlah kolom
         children: [
-          _buildButton(context, 'Dashboard', const DataPenjualan(), 'assets/img/dashboard.png'),
-          _buildButton(context, 'Tambah Data', const DataPenjualan(), 'assets/img/tambah.png'),
+          _buildButton(context, 'Dashboard Penjualan', const DataPenjualan(), 'assets/img/dashboard.png'),
+          _buildButton(context, 'Data Produk', const ProdukPage(), 'assets/img/tambah.png'),
           _buildButton(context, 'Update Data', const DataPenjualan(), 'assets/img/update.png'),
           _buildButton(context, 'Logout', const LoginPage(), 'assets/img/logout.png'),
         ],

@@ -30,3 +30,24 @@ class DataStorage {
     // Data awal lainnya
   ];
 }
+
+class DataStorage2 {
+  static List<Map<String, dynamic>> dataProduk = [
+    {
+      "kodeProduk": "2810001",
+      "namaProduk": "Kulkas",
+      "hargaProduk": 2500000.0,
+    },
+    {
+      "kodeProduk": "2810002",
+      "namaProduk": "Televisi",
+      "hargaProduk": 5000000.0,
+    },
+    {
+      "kodeProduk": "2810003",
+      "namaProduk": "Mesin Cuci",
+      "hargaProduk": 1500000.0,
+    },
+    // Data awal lainnya
+  ];
+}

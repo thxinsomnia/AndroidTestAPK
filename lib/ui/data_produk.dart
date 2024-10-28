@@ -1,39 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/ui/edit_data.dart';
-import 'package:myapp/ui/penjualan_form.dart';
+// import 'package:myapp/ui/edit_data.dart';
+import 'package:myapp/ui/edit_produk.dart';
+import 'package:myapp/ui/produk_form.dart';
 import 'data_storage.dart'; // Import file penyimpanan data
 
-class DataPenjualan extends StatefulWidget {
-  const DataPenjualan({Key? key}) : super(key: key);
+class DataProduk extends StatefulWidget {
+  const DataProduk({Key? key}) : super(key: key);
 
   @override
-  _DataPenjualanState createState() => _DataPenjualanState();
+  DataProdukState createState() => DataProdukState();
 }
 
-class _DataPenjualanState extends State<DataPenjualan> {
+class DataProdukState extends State<DataProduk> {
   
   @override
   void initState() {
     super.initState();
   }
 
-  void _addDataPenjualan(Map<String, dynamic> newData) {
+  void _addDataProduk(Map<String, dynamic> newData) {
     setState(() {
-      DataStorage.dataPenjualan.add(newData);
+      DataStorage2.dataProduk.add(newData);
     });
     _showSnackBar('Data berhasil ditambahkan!');
   }
 
-  void _updateDataPenjualan(int index, Map<String, dynamic> updatedData) {
+  void _updateDataProduk(int index, Map<String, dynamic> updatedData) {
     setState(() {
-      DataStorage.dataPenjualan[index] = updatedData;
+      DataStorage2.dataProduk[index] = updatedData;
     });
     _showSnackBar('Data berhasil diperbarui!');
   }
 
-  void _deleteDataPenjualan(int index) {
+  void _deleteDataProduk(int index) {
     setState(() {
-      DataStorage.dataPenjualan.removeAt(index);
+      DataStorage2.dataProduk.removeAt(index);
     });
     _showSnackBar('Data berhasil dihapus!');
   }
@@ -48,7 +49,7 @@ class _DataPenjualanState extends State<DataPenjualan> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Data Penjualan'),
+        title: const Text('Data Produk'),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
@@ -56,12 +57,12 @@ class _DataPenjualanState extends State<DataPenjualan> {
               final newData = await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const PenjualanForm(),
+                  builder: (context) => const ProdukForm(),
                 ),
               );
 
               if (newData != null) {
-                _addDataPenjualan(newData);
+                _addDataProduk(newData);
               }
             },
           ),
@@ -71,27 +72,19 @@ class _DataPenjualanState extends State<DataPenjualan> {
         scrollDirection: Axis.horizontal,
         child: DataTable(
           columns: const [
-            DataColumn(label: Text('No Faktur')),
-            DataColumn(label: Text('Tanggal')),
-            DataColumn(label: Text('Nama Customer')),
-            DataColumn(label: Text('Nama Barang')),
-            DataColumn(label: Text('Harga Barang')),
-            DataColumn(label: Text('Jumlah Barang')),
-            DataColumn(label: Text('Total Harga')),
+            DataColumn(label: Text('Kode Produk')),
+            DataColumn(label: Text('Nama Produk')),
+            DataColumn(label: Text('Harga Produk')),
             DataColumn(label: Text('Aksi')),
           ],
-          rows: DataStorage.dataPenjualan.asMap().map((index, data) {
+          rows: DataStorage2.dataProduk.asMap().map((index, data) {
             return MapEntry(
               index,
               DataRow(
                 cells: [
-                  DataCell(Text(data["noFaktur"])),
-                  DataCell(Text(data["tanggal"])),
-                  DataCell(Text(data["namaCustomer"])),
-                  DataCell(Text(data["namaBarang"])),
-                  DataCell(Text(data["hargaBarang"].toString())),
-                  DataCell(Text(data["jumlahBarang"].toString())),
-                  DataCell(Text(data["totalHarga"].toString())),
+                  DataCell(Text(data["kodeProduk"])),
+                  DataCell(Text(data["namaProduk"])),
+                  DataCell(Text(data["hargaProduk"].toString())),
                   DataCell(
                     Row(
                       children: [
@@ -101,19 +94,19 @@ class _DataPenjualanState extends State<DataPenjualan> {
                             final updatedData = await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => EditData(initialData: data),
+                                builder: (context) => EditProduk(initialData: data),
                               ),
                             );
 
                             if (updatedData != null) {
-                              _updateDataPenjualan(index, updatedData);
+                              _updateDataProduk(index, updatedData);
                             }
                           },
                         ),
                         IconButton(
                           icon: const Icon(Icons.delete),
                           onPressed: () {
-                            _deleteDataPenjualan(index);
+                            _deleteDataProduk(index);
                           },
                         ),
                       ],
